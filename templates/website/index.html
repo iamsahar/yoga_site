@@ -13,8 +13,13 @@
                             Lorem ipsum dolor sit amet elit. Phasell nec pretum mi. Curabi ornare velit non. Aliqua metus tortor auctor quis sem.
                         </p>
                         <div class="hero-btn">
-                            <a class="btn" href="">Join Now</a>
-                            <a class="btn" href="">Contact Us</a>
+                            <a class="btn" href="{% url 'accounts:signup' %}">Join Now</a>
+                            {% if request.user.is_authenticated %}
+                            <a class="btn" href="{% url 'accounts:logout' %}">Logout</a>
+                            {% else %}
+                            <a class="btn" href="{% url 'accounts:login' %}">Login</a>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>
