@@ -63,5 +63,5 @@ def blog_search(request):
     context = {"posts": posts}
     return render(request, "blog/blog.html", context)
 
-# def handler404(request, exception):
-#     return render(request, '404.html', status=404)
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
