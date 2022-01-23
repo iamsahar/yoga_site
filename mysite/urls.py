@@ -18,6 +18,14 @@ from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
+from website.sitemaps import StaticViewSitemap
+from blog.sitemaps import BlogSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'blog': BlogSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +33,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('blog/', include('blog.urls')),
     path('captcha/', include('captcha.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path('robots.txt', include('robots.urls')),
     re_path(r'^password-reset/$', auth_views.PasswordResetView.as_view(), name='password_reset'),
     re_path(r'^password-reset/done/$', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     re_path(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$',
