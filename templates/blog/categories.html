@@ -1,0 +1,15 @@
+{% load blog_tags %}
+
+<div class="sidebar-widget wow fadeInUp">
+    <h2 class="widget-title">Categories</h2>
+    <div class="category-widget">
+        <ul>
+        {% for name,count in categories.items %}
+            <li>
+                <a href="{% url 'blog:category' cat_name=name %}">{{name}}</a>
+                <span>( {{count}} )</span>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>

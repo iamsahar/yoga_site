@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="sidebar-widget wow fadeInUp">
+    <div class="search-widget">
+        <form action="{% url 'blog:search' %}" method="get">
+            <input class="form-control" type="text" name="s" placeholder="Search Keyword">
+            <button class="btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{% load blog_tags %}
+{% load humanize %}
+
+<div class="sidebar-widget wow fadeInUp">
+    <h2 class="widget-title">Recent Post</h2>
+    <div class="recent-post">
+    {% for post in posts %}
+        <div class="post-item">
+            <div class="post-img">
+                <img src="{{post.image.url}}" alt="{{post.title}}"/>
+            </div>
+             <div class="post-text">
+                <a href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a>
+                <div class="post-meta"><p>{{post.published_date}}</p></div>
+            </div>
+        </div>
+    {% endfor %}															
+    </div>
+</div>
